@@ -3,6 +3,8 @@
 
 (tool-bar-mode -1)
 
+(setq-default truncate-lines t)
+
 (setq dired-listing-switches "-aloh")
 
 (require 'package)
@@ -30,7 +32,7 @@
 (require 'exec-path-from-shell) ;; if not using the ELPA package
 (exec-path-from-shell-initialize)
 
-(pyvenv-activate "~/.emacs.d/2.7.13/")
+(pyvenv-activate "~/.emacs.d/3.6.3/")
 (elpy-enable)
 ;; (elpy-use-ipython)
 
