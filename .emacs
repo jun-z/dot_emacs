@@ -3,38 +3,32 @@
 
 (tool-bar-mode -1)
 
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+
 (setq-default truncate-lines t)
 
+(setq mac-command-modifier 'control)
 (setq dired-listing-switches "-aloh")
 
+(global-set-key [M-return] 'toggle-frame-fullscreen)
+
 (require 'package)
-(setq package-archives '(("gnu" ."http://elpa.gnu.org/packages/")
-			 ("marmalade" ."http://marmalade-repo.org/packages/")
-			 ("melpa" ."http://melpa.milkbox.net/packages/")))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+(require 'doom-themes)
+(load-theme 'doom-city-lights t)
+
 (set-default-font "Menlo 11")
-
-;; (require 'color-theme)
-;; (color-theme-initialize)
-;; (load-file "~/.emacs.d/elpa/color-themes/color-theme-mac-classic.el")
-;; (color-theme-mac-classic)
-
-;;(load-theme 'monokai t)
-(load-theme 'solarized-dark t)
 
 (setq inhibit-splash-screen t)
 (switch-to-buffer "**")
 
 (require 'autopair)
-(autopair-global-mode) ;; to enable in all buffers
+(autopair-global-mode)
 
-(require 'exec-path-from-shell) ;; if not using the ELPA package
+(require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
 
-(pyvenv-activate "~/.emacs.d/3.6.3/")
 (elpy-enable)
-;; (elpy-use-ipython)
-
-;; fix for emacs 25.1
-(global-set-key (kbd "M-*") 'pop-tag-mark)
